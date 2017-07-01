@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
 
+var router = express.Router();
+
 //set the app to use ejs template and public folder for js script
 app.use(express.static('public'))
 app.set('view engine', 'ejs');
@@ -59,7 +61,7 @@ app.put('/nelsons', (req, res) => {
   })
 })
 
-
+// Special Function For nelson object
 app.get('/nelsons/:nelson_name', (req, res) => {
   db.collection('nelsons').find({name: req.params.nelson_name}).toArray(function(err, results) {
   console.log(results)
@@ -67,6 +69,20 @@ app.get('/nelsons/:nelson_name', (req, res) => {
 
   res.send(results);
 })
+})
+
+//Special Function for modify value by Nelson Object
+app.put('/nelsons/:nelson_name/:position', (req, res) => {
+  db.collection('nelsons')
+  .findOneAndUpdate({name: req.params.nelson_name}, {
+    $set: {
+      name: req.params.nelson_name,
+      position: req.params.position
+    }
+  }, (err, result) => {
+    if (err) return res.send(err)
+    res.send(result)
+  })
 })
 
 /*app.listen(3000, function(){
