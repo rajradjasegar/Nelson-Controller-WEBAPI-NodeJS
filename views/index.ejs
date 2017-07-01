@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+</head>
+<body>
+  <h2>Nelson objetcs : </h2>
+
+  <ul class="nelsons">
+  <% for(var i=0; i<nelsons.length; i++) {%>
+    <li class="nelson">
+      <span>Nelson : <%= nelsons[i].name %></span>
+      <span>, its position : <%= nelsons[i].position %></span>
+    </li>
+  <% } %>
+  </ul>
+
+  <!--<form action="/nelsons" method="POST">
+    <input type="text" placeholder="name" name="name">
+    <input type="text" placeholder="position" name="position">
+    <button type="submit">Submit</button>
+  </form>-->
+
+  <div>
+  <!--<h2>Replace Shigaraki value</h2>-->
+  <input id="value" type="text" placeholder="Shigaraki pos" name="quote">
+  <button id="update"> Update </button>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
