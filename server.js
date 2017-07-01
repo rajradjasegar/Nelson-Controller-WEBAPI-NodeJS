@@ -3,8 +3,6 @@ const bodyParser = require('body-parser');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
 
-var router = express.Router();
-
 //set the app to use ejs template and public folder for js script
 app.use(express.static('public'))
 app.set('view engine', 'ejs');
@@ -15,8 +13,8 @@ var db;
 MongoClient.connect('mongodb://raj:raj@ds147072.mlab.com:47072/test_raj', (err, database) => {
   if (err) return console.log(err)
   db = database
-  app.listen(3000, () => {
-    console.log('listening on 3000')
+  app.listen(80, () => {
+    console.log('listening on 80')
   })
 })
 
@@ -84,6 +82,7 @@ app.put('/nelsons/:nelson_name/:position', (req, res) => {
     res.send(result)
   })
 })
+
 
 /*app.listen(3000, function(){
   console.log("Listening on 3000");
