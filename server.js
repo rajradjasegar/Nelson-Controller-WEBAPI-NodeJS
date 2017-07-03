@@ -46,6 +46,22 @@ app.post('/nelsons', (req, res) => {
 })
 })
 
+// this dunction update then redirect to new page
+app.post('/nelson_put', (req, res) => {
+  db.collection('nelsons')
+  .findOneAndUpdate({name: 'Shigaraki'}, {
+    $set: {
+      name: 'Shigaraki',
+      position: req.body.position
+    }
+  }, (err, result) => {
+    if (err) return res.send(err)
+    res.redirect('/')
+    //res.redirect('/');
+  })
+})
+
+//This function it has to be used for javascript fonction
 app.put('/nelsons', (req, res) => {
   db.collection('nelsons')
   .findOneAndUpdate({name: 'Shigaraki'}, {
@@ -56,6 +72,7 @@ app.put('/nelsons', (req, res) => {
   }, (err, result) => {
     if (err) return res.send(err)
     res.send(result)
+    //res.redirect('/');
   })
 })
 

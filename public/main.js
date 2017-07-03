@@ -10,5 +10,6 @@ update.addEventListener('click', function () {
     'position': document.getElementById("value").value
   })
 })
+//document.location.href="http://127.0.0.1:80/"
 //window.location.assign("http://127.0.0.1:3000/")
 })
